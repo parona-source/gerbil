@@ -83,9 +83,9 @@ tags:
 	cd src && LDFLAGS="$(LIBS)" ./build.sh tags
 
 install:
-	mkdir -p ${gerbil_bin} ${gerbil_share} ${gerbil_bin_linkdir} ${gerbil_share_linkdir}
-	cd src && ./install
-	cp -a --link --remove-destination ${gerbil_bin}/* ${gerbil_bin_linkdir}  || \
-	cp -a ${gerbil_bin}/* ${gerbil_bin_linkdir}
-	cp -a --link --remove-destination ${gerbil_share}/* ${gerbil_share_linkdir}  || \
-	cp -a ${gerbil_share}/* ${gerbil_share_linkdir}
+	mkdir -p $(DESTDIR)${gerbil_bin} $(DESTDIR)${gerbil_share} $(DESTDIR)${gerbil_bin_linkdir} $(DESTDIR)${gerbil_share_linkdir}
+	cd src && ./install $(DESTDIR)
+	cp -a --link --remove-destination $(DESTDIR)${gerbil_bin}/* ${gerbil_bin_linkdir}  || \
+	cp -a $(DESTDIR)${gerbil_bin}/* ${gerbil_bin_linkdir}
+	cp -a --link --remove-destination $(DESTDIR)${gerbil_share}/* ${gerbil_share_linkdir}  || \
+	cp -a $(DESTDIR)${gerbil_share}/* ${gerbil_share_linkdir}
